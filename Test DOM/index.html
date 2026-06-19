@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="app-grid">
+        <div class="container">
+            <div class="container-header">
+                <h1>Todo List App</h1>
+                <button id="archiveToggleBtn" class="btn-archive-toggle">📦 Archive</button>
+            </div>
+            <div class="input-section" id="inputSection">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="Enter a new task..."
+                    class="task-input"
+                >
+                <button id="addBtn" class="btn-add">Add Task</button>
+            </div>
+            
+            <ul id="taskList" class="task-list"></ul>
+            
+            <div class="stats">
+                <p>Total: <span id="totalTasks">0</span> | Completed: <span id="completedTasks">0</span></p>
+            </div>
+        </div>
+
+        <aside class="detail-panel" id="detailPanel">
+            <div class="detail-empty" id="detailEmpty">
+                <div class="detail-empty-card">
+                    <h2>Task details</h2>
+                    <p>Click a task card to open its detail view.</p>
+                    <p>Here you can add subtasks, description, priority and track progress.</p>
+                </div>
+            </div>
+            <div class="detail-card hidden" id="detailCard">
+                <div class="detail-header">
+                    <button id="closeDetailBtn" class="btn-link">← Back</button>
+                    <div class="detail-header-meta">
+                        <span class="detail-status" id="detailStatus">Task detail</span>
+                    </div>
+                </div>
+                <div class="priority-buttons-group" id="priorityButtonsGroup">
+                    <button class="priority-btn" data-priority="Low">Low</button>
+                    <button class="priority-btn" data-priority="Medium">Medium</button>
+                    <button class="priority-btn" data-priority="High">High</button>
+                    <button class="priority-btn" data-priority="Urgent">Urgent</button>
+                </div>
+                <div class="detail-body">
+                    <div class="detail-title-block">
+                        <h2 id="detailTitle">Task title</h2>
+                        <div class="detail-date" id="detailCreated"></div>
+                    </div>
+
+                    <label class="field-label">Description</label>
+                    <textarea id="descriptionInput" class="description-input" placeholder="Write a task description..."></textarea>
+
+                    <div class="progress-section">
+                        <div class="progress-top">
+                            <span>Progress</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="subtask-section">
+                        <div class="subtask-header">
+                            <h3>Subtasks</h3>
+                            <button id="clearSubtasksBtn" class="btn-small muted">Clear</button>
+                        </div>
+                        <div class="subtask-add">
+                            <input type="text" id="subtaskInput" placeholder="Add a new subtask..." class="subtask-input">
+                            <button id="subtaskAddBtn" class="btn-add small">Add</button>
+                        </div>
+                        <ul id="subtaskList" class="subtask-list"></ul>
+                    </div>
+
+                    <div class="detail-actions">
+                        <button id="restoreBtn" class="btn-restore hidden">✓ Restore Task</button>
+                        <button id="permanentDeleteBtn" class="btn-permanent-delete hidden">🗑 Permanently Delete</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="delete-confirmation hidden" id="deleteConfirmation">
+        <div class="delete-confirmation-content">
+            <div class="delete-confirmation-icon">🗑</div>
+            <p class="delete-confirmation-text" id="deleteConfirmationText">Delete this task?</p>
+            <div class="delete-confirmation-actions">
+                <button id="confirmDeleteBtn" class="btn-confirm-delete">Archive</button>
+                <button id="cancelDeleteBtn" class="btn-cancel-delete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
